@@ -1,0 +1,12 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+// $messages-theme-primary: mat-palette($mat-blue-gray);
+// $messages-theme-accent: mat-palette($mat-deep-orange);
+$messages-theme-primary: mat-palette($mat-red);
+$messages-theme-accent: mat-palette($mat-grey);
+
+$messages-theme: mat-light-theme($messages-theme-primary, $messages-theme-accent);
+
+@include angular-material-theme($messages-theme);
