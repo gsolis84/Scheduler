@@ -1,20 +1,69 @@
-
-  <mat-card *ngFor="let task of tasks$ | async" color="primary">
+<!-- <h1>Tasks - {{dbUsers.length}} user(s)</h1> -->
+<div>
+    <button mat-raised-button (click)='addNewtask()'>Add New Task</button>
+</div>
+<!-- <div *ngFor="let user of dbUsers">
+  <h2>{{user}}</h2>
+  <mat-card class="example-card mat-elevation-z8" *ngFor="let task of tasks" color="primary" >
     <mat-card-header >   
       <mat-card-title>{{task.title}}</mat-card-title>
+      <mat-card-subtitle>{{task.status}}</mat-card-subtitle>
     </mat-card-header>
   
     <mat-card-content >
-      <p>
-        {{task.description}}
-      </p>
+      <p>{{task.description}}</p>
+      <p>Created By: {{task.createdBy}}</p>
     
     </mat-card-content>
-    <mat-card-actions>
-    <button mat-raised-button color="accent">Accept</button>
-    <button mat-raised-button color="accent">Refuse</button>
-  </mat-card-actions>
+    <mat-card-actions *ngIf="task.status === 'New'">
+    <button mat-raised-button color="accent" *ngFor="let action of task.actions" (click)='processTask(task.id, action.operationType)'>{{action.title}}</button>
+    </mat-card-actions>
   </mat-card>
+  <mat-divider></mat-divider>
+</div> -->
+
+<mat-accordion style="max-width: 40px;">
+  <mat-expansion-panel *ngFor="let user of dbUsers">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{user}}
+      </mat-panel-title>
+      <!-- <mat-panel-description>
+        Type your name and age
+      </mat-panel-description> -->
+    </mat-expansion-panel-header>
+
+    <mat-card class="example-card mat-elevation-z8" *ngFor="let task of getUserTasks(user)" color="primary" >
+        <mat-card-header >   
+          <mat-card-title>{{task.title}}</mat-card-title>
+          <mat-card-subtitle>{{task.status}}</mat-card-subtitle>
+        </mat-card-header>
+      
+        <mat-card-content >
+          <p>{{task.description}}</p>
+          <p>Created By: {{task.createdBy}}</p>
+        
+        </mat-card-content>
+        <mat-card-actions *ngIf="task.status === 'New'">
+        <button mat-raised-button color="accent" *ngFor="let action of task.actions" (click)='processTask(task.id, action.operationType)'>{{action.title}}</button>
+        </mat-card-actions>
+      </mat-card>
+
+  </mat-expansion-panel>
+  <!-- <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Self aware panel
+      </mat-panel-title>
+      <mat-panel-description>
+        Currently I am {{panelOpenState ? 'open' : 'closed'}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>I'm visible because I am open</p>
+  </mat-expansion-panel> -->
+</mat-accordion>
+
 
 
 

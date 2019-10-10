@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 // import { AngularFirestore, AngularFirestoreCollection  } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+// import { Observable } from 'rxjs';
 
 export interface Tasks {
   description: string;
@@ -17,10 +17,8 @@ export class AppComponent  {
   // tasksCollectionRef: AngularFirestoreCollection<Tasks>;
   // tasks$: Observable<Tasks[]>;
   // name = 'Firestore testing';
-  
   // constructor(private db: AngularFirestore) {
-  //        this.tasksCollectionRef = db.collection<Tasks>('tasks2');
-  //        this.tasks$ = this.tasksCollectionRef.valueChanges();
+  //   //      this.tasksCollectionRef = db.collection<Tasks>('tasks2');
+  //   //      this.tasks$ = this.tasksCollectionRef.valueChanges();
   //   }
-   
 }
